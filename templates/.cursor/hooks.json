@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "hooks": {
+    "stop": [
+      {
+        "command": "cd <project-dir> && ./node_modules/.bin/oxfmt . 2>/dev/null || true"
+      }
+    ]
+  }
+}
