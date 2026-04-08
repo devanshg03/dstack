@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Create a new dstack project — Next.js, Bun, Convex, Shadcn, Oxlint, Oxfmt",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devanshg03/dstack.git"
+  },
   "bin": {
     "create-dstack": "./dist/index.js"
   },
