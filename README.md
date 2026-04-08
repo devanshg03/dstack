@@ -8,14 +8,16 @@ bunx create-dstack my-app
 
 ## What's included
 
-| Tool | Purpose |
-|------|---------|
-| [Next.js](https://nextjs.org) (latest) | Framework |
-| [Bun](https://bun.sh) | Runtime + package manager |
-| [Convex](https://convex.dev) | Backend + database |
-| [Shadcn UI](https://ui.shadcn.com) | Component library |
-| [Oxlint](https://oxc.rs/docs/guide/usage/linter) | Linter |
-| [Oxfmt](https://www.npmjs.com/package/oxfmt) | Formatter |
+
+| Tool                                             | Purpose                   |
+| ------------------------------------------------ | ------------------------- |
+| [Next.js](https://nextjs.org) (latest)           | Framework                 |
+| [Bun](https://bun.sh)                            | Runtime + package manager |
+| [Convex](https://convex.dev)                     | Backend + database        |
+| [Shadcn UI](https://ui.shadcn.com)               | Component library         |
+| [Oxlint](https://oxc.rs/docs/guide/usage/linter) | Linter                    |
+| [Oxfmt](https://www.npmjs.com/package/oxfmt)     | Formatter                 |
+
 
 ## Scripts
 
@@ -29,4 +31,4 @@ bun format:check   # check formatting without writing
 
 ## License
 
-MIT © [Devansh Gandhi](https://github.com/devanshgandhi)
+MIT © [Devansh Gandhi](https://github.com/devanshg03)
