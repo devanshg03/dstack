@@ -6,6 +6,8 @@ Scaffold a production-ready Next.js app with a single command.
 bunx create-dstack my-app
 ```
 
+![Demo](./assets/demo.gif)
+
 ## What's included
 
 
