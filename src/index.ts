@@ -52,7 +52,7 @@ async function main() {
   const s = p.spinner();
 
   s.start("preheating the oven...");
-  await $`bunx create-next-app@latest ${projectName} --typescript --tailwind --no-eslint --app --src-dir --import-alias "@/*" --use-bun`.quiet();
+  await $`bunx create-next-app@latest ${projectName} --typescript --tailwind --no-eslint --app --no-src-dir --import-alias "@/*" --use-bun`.quiet();
   s.stop("next.js is in the chat");
 
   s.start("calling convex off the bench...");
@@ -105,7 +105,7 @@ async function main() {
   // 5. Templates
   s.start("putting the secret sauce on it...");
 
-  copyTemplate(join(TEMPLATES_DIR, "globals.css"), join(projectDir, "src", "app", "globals.css"));
+  copyTemplate(join(TEMPLATES_DIR, "globals.css"), join(projectDir, "app", "globals.css"));
   copyTemplate(join(TEMPLATES_DIR, "oxlint.json"), join(projectDir, "oxlint.json"));
   copyTemplate(join(TEMPLATES_DIR, "oxfmt.json"), join(projectDir, "oxfmt.json"));
 
