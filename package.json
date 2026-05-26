@@ -1,6 +1,6 @@
 {
   "name": "create-dstack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Create a new dstack project — Next.js, Bun, Convex, Shadcn, Oxlint, Oxfmt",
   "type": "module",
   "repository": {
