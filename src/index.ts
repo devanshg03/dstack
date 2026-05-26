@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 import { $ } from "bun";
-import { existsSync, cpSync, mkdirSync, appendFileSync } from "fs";
+import { existsSync, cpSync } from "fs";
 import { join, resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import * as p from "@clack/prompts";
@@ -34,13 +34,6 @@ async function main() {
     projectName = input as string;
   }
 
-  // 2. Options
-  const useStackAuth = await p.confirm({ message: "Add Stack Auth?" });
-  if (p.isCancel(useStackAuth)) {
-    p.cancel("Cancelled.");
-    process.exit(0);
-  }
-
   const projectDir = resolve(process.cwd(), projectName);
 
   if (existsSync(projectDir)) {
@@ -67,42 +60,7 @@ async function main() {
   await $`bunx shadcn@latest init -d`.cwd(projectDir).quiet();
   s.stop("looking fire already");
 
-  // 4. Stack Auth
-  if (useStackAuth) {
-    s.start("sliding stack auth into the dm...");
-    await $`bun add @stackframe/stack`.cwd(projectDir).quiet();
-    s.stop("auth is cooked and ready");
-
-    // convex/auth.config.ts
-    mkdirSync(join(projectDir, "convex"), { recursive: true });
-    copyTemplate(
-      join(TEMPLATES_DIR, "convex", "auth.config.ts"),
-      join(projectDir, "convex", "auth.config.ts"),
-    );
-
-    // .env.local placeholders
-    appendFileSync(
-      join(projectDir, ".env.local"),
-      [
-        "",
-        "# Stack Auth — fill in from https://app.stack-auth.com",
-        "NEXT_PUBLIC_STACK_PROJECT_ID=",
-        "NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY=",
-        "STACK_SECRET_SERVER_KEY=",
-        "",
-      ].join("\n"),
-    );
-
-    p.log.warn(
-      "Stack Auth needs manual steps:\n" +
-      `  1. Create a project at ${color.cyan("https://app.stack-auth.com")}\n` +
-      `  2. Fill in ${color.dim(".env.local")} with your keys\n` +
-      `  3. Set the same vars in your Convex dashboard\n` +
-      `  4. Run ${color.cyan("bunx @stackframe/stack-cli@latest init")} inside the project to finish wiring up the provider`,
-    );
-  }
-
-  // 5. Templates
+  // 4. Templates
   s.start("putting the secret sauce on it...");
 
   copyTemplate(join(TEMPLATES_DIR, "globals.css"), join(projectDir, "app", "globals.css"));

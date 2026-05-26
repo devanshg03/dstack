@@ -19,7 +19,6 @@ bunx oxfmt --check . # Check formatting
 - React 19
 - TypeScript 5 with strict mode
 - Convex for DB
-- StackAuth for auth, teams, user metadata
 - All database types in Convex
 
 ## Conventions
@@ -49,7 +48,6 @@ API routes: mirror domains (app/api/mail/, app/api/profile/)
 
 ## Authentication & Security
 
-- User endpoints: StackAuth server session for API routes and Server Actions; `useUser` only in client components
 - System/cron: Bearer token
 - Error handling: `throwOnError` or `if (error)` patterns
 
